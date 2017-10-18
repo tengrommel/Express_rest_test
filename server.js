@@ -1,7 +1,13 @@
 const express = require('express')
 const router = express.Router()
-
 const app = express()
+
+const NODE_ENV = process.env.NODE_ENV
+
+if (NODE_ENV === 'development') {
+    // log some errors
+}
+
 
 app.get('/repeat/:word', (req, res)=>{
     const {word} = req.params
