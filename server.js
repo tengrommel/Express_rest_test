@@ -6,13 +6,14 @@ const app = express()
 app.get('/repeat/:word', (req, res)=>{
     const {word} = req.params
     // const word = req.params.word
-    if (typeof word === 'string'){
-        res
-            .status(400)
-            .send("Error: Parameter submitted is not a string...")
-    }
+    // if `(typeof word === 'string'){
+    //     res
+    //         .status(400)
+    //         .send("Error: Parameter submitted is not a string...")
+    // }`
     res
         .status(200)
+        .set('Content-Type', 'application/text')
         .send(`${word} ${word}`)
 })
 
