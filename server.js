@@ -1,13 +1,16 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const router = express.Router()
 const app = express()
 
 const NODE_ENV = process.env.NODE_ENV
 
-if (NODE_ENV === 'development') {
-    // log some errors
-}
+app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({extended: false}))
 
+// bodyParser
+// if HTTP method is POST, PUT, DELETE, then...
+// take the body of that request, parse it, and set req.body to the result
 
 app.get('/repeat/:word', (req, res)=>{
     const {word} = req.params
@@ -22,6 +25,15 @@ app.get('/repeat/:word', (req, res)=>{
         .set('Content-Type', 'application/text')
         .send(`${word} ${word}`)
 })
+
+// { a: 5, b: "dog"}
+
+app.post('/weave', (req, res)=>{
+    const {a, b} = req.body
+    res
+        .send(`${a} ${b} ${a} ${b}`)
+})
+
 
 const port = process.env.PORT || 3000
 app.listen(port, ()=>{
