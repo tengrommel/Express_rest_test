@@ -6,7 +6,14 @@ const app = express()
 app.get('/repeat/:word', (req, res)=>{
     const {word} = req.params
     // const word = req.params.word
-    res.send(`${word} ${word}`)
+    if (typeof word === 'string'){
+        res
+            .status(400)
+            .send("Error: Parameter submitted is not a string...")
+    }
+    res
+        .status(200)
+        .send(`${word} ${word}`)
 })
 
 const port = process.env.PORT || 3000
