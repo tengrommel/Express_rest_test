@@ -1,25 +1,33 @@
 {
-  "name": "Express_rest_test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "start": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tengrommel/Express_rest_test.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tengrommel/Express_rest_test/issues"
-  },
-  "homepage": "https://github.com/tengrommel/Express_rest_test#readme"
+    "name": "Express_rest_test",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.15.5",
+        "pg-promise": "^6.10.2"
+    },
+    "devDependencies": {
+        "nodemon": "^1.12.1",
+        "pg-monitor": "^0.8.3"
+    },
+    "scripts": {
+        "start": "nodemon server.js",
+        "db:create": "createdb contactsrestapi",
+        "db:init": "npm run db:loadschema && npm run db:seed",
+        "db:loadschema": "psql contactsrestapi < ./database/schema.sql",
+        "db:seed": "psql contactsrestapi < ./database/seed.sql"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tengrommel/Express_rest_test.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tengrommel/Express_rest_test/issues"
+    },
+    "homepage": "https://github.com/tengrommel/Express_rest_test#readme"
 }
