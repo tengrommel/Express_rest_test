@@ -3,23 +3,20 @@ const bodyParser = require('body-parser')
 const router = express.Router()
 const app = express()
 
-const NODE_ENV = process.env.NODE_ENV
-
 app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({extended: false}))
+    // app.use(bodyParser.urlencoded({extended: false}))
+    // bodyParser
+    // if HTTP method is POST, PUT, DELETE, then...
+    // take the body of that request, parse it, and set req.body to the result
 
-// bodyParser
-// if HTTP method is POST, PUT, DELETE, then...
-// take the body of that request, parse it, and set req.body to the result
-
-app.get('/repeat/:word', (req, res)=>{
-    const {word} = req.params
-    // const word = req.params.word
-    // if `(typeof word === 'string'){
-    //     res
-    //         .status(400)
-    //         .send("Error: Parameter submitted is not a string...")
-    // }`
+app.get('/repeat/:word', (req, res) => {
+    const { word } = req.params
+        // const word = req.params.word
+        // if `(typeof word === 'string'){
+        //     res
+        //         .status(400)
+        //         .send("Error: Parameter submitted is not a string...")
+        // }`
     res
         .status(200)
         .set('Content-Type', 'application/text')
@@ -28,14 +25,14 @@ app.get('/repeat/:word', (req, res)=>{
 
 // { a: 5, b: "dog"}
 
-app.post('/weave', (req, res)=>{
-    const {a, b} = req.body
+app.post('/weave', (req, res) => {
+    const { a, b } = req.body
     res
         .send(`${a} ${b} ${a} ${b}`)
 })
 
 
 const port = process.env.PORT || 3000
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`Server is listen on port ${port}`)
 })
