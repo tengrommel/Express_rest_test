@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const router = express.Router()
+const { getAllContacts } = require('./database/database_utilities')
+const apiRouter = require('./routes/api')
 const app = express()
 
 app.use(bodyParser.json())
@@ -8,6 +9,8 @@ app.use(bodyParser.json())
     // bodyParser
     // if HTTP method is POST, PUT, DELETE, then...
     // take the body of that request, parse it, and set req.body to the result
+
+app.use('/api', apiRouter)
 
 app.get('/repeat/:word', (req, res) => {
     const { word } = req.params
